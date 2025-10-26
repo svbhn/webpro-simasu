@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalender SIMASU</title>
+    <link rel="stylesheet" href="assets/css/calender.css">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="logo">
+                <h2>SIMASU</h2>
+            </div>
+            
+            <div class="menu">
+                <div class="menu-item">Dashboard</div>
+                <div class="menu-item">Inventaris</div>
+                <div class="menu-item">Sewa Ruangan</div>
+                <div class="menu-item active">Kalender</div>
+                <div class="menu-item">Profil</div>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="header">
+                <h1>Kalender Peminjaman & Sewa</h1>
+                <p>Pantau ketersediaan inventaris dan ruangan</p>
+            </div>
+
+            <div class="calendar-container">
+                <div class="calendar-section">
+                    <div class="calendar-header">
+                        <h2 id="currentMonth">Oktober 2025</h2>
+                        <div class="calendar-nav">
+                            <button id="prevMonth">← Sebelumnya</button>
+                            <button id="nextMonth">Berikutnya →</button>
+                        </div>
+                    </div>
+
+                    <table class="calendar-table">
+                        <thead>
+                            <tr>
+                                <th>Min</th>
+                                <th>Sen</th>
+                                <th>Sel</th>
+                                <th>Rab</th>
+                                <th>Kam</th>
+                                <th>Jum</th>
+                                <th>Sab</th>
+                            </tr>
+                        </thead>
+                        <tbody id="calendarDays"></tbody>
+                    </table>
+
+                    <div class="legend">
+                        <div class="legend-item">
+                            <div class="dot peminjaman"></div>
+                            <span>Ada Peminjaman</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="dot sewa"></div>
+                            <span>Ada Sewa Ruang</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="list-section">
+                    <h3>Daftar Peminjaman & Sewa</h3>
+                    <div id="itemsList"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="bookingModal">
+        <div class="modal-content">
+            <h2>Tambah Peminjaman/Sewa</h2>
+            <form id="bookingForm">
+                <div class="form-group">
+                    <label>Tipe</label>
+                    <select id="bookingType" required>
+                        <option value="peminjaman">Peminjaman Barang</option>
+                        <option value="sewa">Sewa Ruangan</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Nama Item/Ruangan</label>
+                    <input type="text" id="itemName" placeholder="Contoh: 20 Kursi Putih" required>
+                </div>
+                <div class="form-group">
+                    <label>Peminjam/Penyewa</label>
+                    <input type="text" id="borrower" placeholder="Contoh: Acara Walimah" required>
+                </div>
+                <div class="form-group">
+                    <label>Tanggal Mulai</label>
+                    <input type="date" id="startDate" required>
+                </div>
+                <div class="form-group">
+                    <label>Tanggal Selesai</label>
+                    <input type="date" id="endDate" required>
+                </div>
+                <div class="modal-buttons">
+                    <button type="button" class="btn-secondary" id="cancelBtn">Batal</button>
+                    <button type="submit" class="btn-primary">Simpan</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="assets/javascript/calender.js"></script>
+</body>
+</html>
