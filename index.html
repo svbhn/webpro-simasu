@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SIMASU – Masuk</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <div class="logo-wrap" aria-hidden="true">
+        <div class="logo-wrap">
+          <img src="assets/logo.png" alt="Logo SIMASU" class="logo" />
+        </div>
+      </div>
+      <div class="brand">S I M A S U</div>
+      <h1>Kelola Inventaris &amp;<br />Ruangan Masjid</h1>
+      <p class="sub">
+        Aplikasi modern bernuansa Islami untuk memudahkan pencatatan inventaris
+        dan peminjaman ruangan.
+      </p>
+    </header>
+
+    <main class="shell">
+      <section class="card" aria-label="Form Masuk">
+        <nav class="tabs" aria-label="Tab">
+          <a class="tab active" href="login.html" aria-current="page">Masuk</a>
+          <a class="tab" href="register.html">Daftar</a>
+        </nav>
+
+        <form action="#" method="post" novalidate>
+          <div class="form-row">
+            <label for="email">Email</label>
+            <input
+              class="input"
+              type="email"
+              id="email"
+              name="email"
+              placeholder="nama@domain.com"
+              autocomplete="email"
+              required
+            />
+          </div>
+
+          <div class="form-row">
+            <label for="password">Kata Sandi</label>
+            <input
+              class="input"
+              type="password"
+              id="password"
+              name="password"
+              placeholder="Minimal 6 karakter"
+              minlength="6"
+              autocomplete="current-password"
+              required
+            />
+          </div>
+
+          <button class="btn" type="submit">Masuk</button>
+
+          <p class="helper">
+            Belum punya akun? <a href="register.html">Daftar sekarang</a>
+          </p>
+          <p class="tos">
+            Dengan masuk, Anda menyetujui tata tertib dan peraturan pengelolaan
+            fasilitas masjid.
+          </p>
+        </form>
+      </section>
+    </main>
+
+    <footer class="footer">© 2025 Takmir Masjid Al-Barokah.</footer>
+  </body>
+</html>
