@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIMASU - Sistem Manajemen Masjid</title>
+    <link rel="stylesheet" href="assets/css/sewa.css">
+</head>
+<body>
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <span class="logo-icon">S</span>
+                <span class="logo-text">SIMASU</span>
+            </div>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="#" class="nav-item">
+                <span>Dashboard</span>
+            </a>
+            <a href="#" class="nav-item">
+                <span>Inventaris</span>
+            </a>
+            <a href="#" class="nav-item active">
+                <span>Sewa Ruangan</span>
+            </a>
+            <a href="#" class="nav-item">
+                <span>Kalender</span>
+            </a>
+            <a href="#" class="nav-item">
+                <span>Profil</span>
+            </a>
+        </nav>
+        <div class="sidebar-footer">
+            <a href="#" class="logout-btn">
+                <span>Logout</span>
+            </a>
+        </div>
+    </div>
+    <div class="main-content">
+        <div class="content-header">
+            <div>
+                <h1 class="page-title">Sewa Ruangan</h1>
+                <p class="page-subtitle">Kelola pemesanan dan penyewaan ruang masjid</p>
+            </div>
+            <button class="btn-primary" id="btnTambahRuangan">
+                + Tambah Ruangan
+            </button>
+        </div>
+        <div class="room-grid" id="roomGrid">
+        </div>
+    </div>
+    <script src="assets/JS/sewa.js"></script>
+</body>
+</html>
