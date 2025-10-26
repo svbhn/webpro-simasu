@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIMASU - Dashboard</title>
+    <link rel="stylesheet" href="assets/css/dashboard.css">
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <span class="logo-icon">S</span>
+                <span class="logo-text">SIMASU</span>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="#" class="nav-item active">
+                <img src="assets/img/icons/home.png" alt="dashboard icon" class="logo-icon">
+                <span class="nav-text">Dashboard</span>
+            </a>
+            <a href="#" class="nav-item">
+                <img src="assets/img/icons/cube.png" alt="Inventaris icon" class="logo-icon">
+                <span class="nav-text">Inventaris</span>
+            </a>
+            <a href="#" class="nav-item">
+                <img src="assets/img/icons/door.png" alt="Ruangan Logo" class="logo-icon">
+                <span class="nav-text">Sewa Ruangan</span>
+            </a>
+            <a href="#" class="nav-item">
+                <img src="assets/img/icons/calendar.png" alt="Calendar Logo" class="logo-icon">
+                <span class="nav-text">Kalender</span>
+            </a>
+            <a href="#" class="nav-item">
+                <img src="assets/img/icons/user.png" alt="Profil Logo" class="logo-icon">
+                <span class="nav-text">Profil</span>
+            </a>
+        </nav>
+
+        <button class="logout-btn" id="logoutBtn">
+            <img src="assets/img/icons/logout.png" alt="logout Logo" width="20" height="20">
+            <span>Logout</span>
+        </button>
+    </aside>
+
+    <main class="main-content">
+        <header class="header">
+            <h1>Dashboard</h1>
+            <p class="subtitle">Selamat datang di Sistem Manajemen Inventaris dan Ruangan Masjid</p>
+        </header>
+
+        <section class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-content">
+                    <h3>Total Inventaris</h3>
+                    <p class="stat-number">1,245</p>
+                </div>
+                <div class="stat-icon stat-icon-green">
+                    <img src="assets/img/icons/cube-green-1024.png" alt="Inventaris icon warna" width="24" height="24">
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-content">
+                    <h3>Ruangan Tersedia</h3>
+                    <p class="stat-number">12</p>
+                </div>
+                <div class="stat-icon stat-icon-blue">
+                    <img src="assets/img/icons/door-green.png" alt="Ruangan icon warna" width="24" height="24">
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-content">
+                    <h3>Anggota Aktif</h3>
+                    <p class="stat-number">384</p>
+                </div>
+                <div class="stat-icon stat-icon-purple">
+                    <img src="assets/img/icons/user-blue.png" alt="Profile icon warna" width="24" height="24">
+                </div>
+            </div>
+        </section>
+
+        <div class="content-grid">
+            <section class="card">
+                <div class="card-header">
+                    <h2>
+                    <img src="assets/img/icons/bell.png" alt="Bell icon" width="32" height="32">
+                        Pengumuman
+                    </h2>
+                    <a href="#" class="link-primary">Lihat Semua →</a>
+                </div>
+
+                <div class="announcement-list">
+                    <div class="announcement-item">
+                        <div class="announcement-content">
+                            <h3>Pemeliharaan Fasilitas</h3>
+                            <p>Pemeliharaan rutin akan dilakukan pada hari Sabtu, 15 Desember 2024</p>
+                            <div class="announcement-footer">
+                                <span class="date">10 Desember 2024</span>
+                                <span class="badge badge-danger">Penting</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="announcement-item">
+                        <div class="announcement-content">
+                            <h3>Penambahan Perlengkapan Ibadah</h3>
+                            <p>Telah ditambahkan 20 unit telekung baru di gudang inventaris</p>
+                            <div class="announcement-footer">
+                                <span class="date">8 Desember 2024</span>
+                                <span class="badge badge-success">Normal</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="announcement-item">
+                        <div class="announcement-content">
+                            <h3>Jadwal Kurban</h3>
+                            <p>Pendaftaran kurban dibuka mulai tanggal 1 Januari 2025</p>
+                            <div class="announcement-footer">
+                                <span class="date">5 Desember 2024</span>
+                                <span class="badge badge-success">Normal</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="card">
+                <h2 class="card-title">Aktivitas Terbaru</h2>
+
+                <div class="activity-list">
+                    <div class="activity-item">
+                        <h4>Barang baru ditambahkan</h4>
+                        <p class="activity-detail">5 telekung baru</p>
+                        <p class="activity-time">10 menit yang lalu</p>
+                    </div>
+
+                    <div class="activity-item">
+                        <h4>Ruangan disewa</h4>
+                        <p class="activity-detail">Aula utama - 15 Des</p>
+                        <p class="activity-time">2 jam yang lalu</p>
+                    </div>
+
+                    <div class="activity-item">
+                        <h4>Peminjaman selesai</h4>
+                        <p class="activity-detail">10 kursi putih</p>
+                        <p class="activity-time">5 jam yang lalu</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <section class="card">
+            <div class="card-header">
+                <h2>
+                    <img src="assets/img/icons/berita.png" alt="Berita icon" width="32" height="32">
+                    Berita & Artikel
+                </h2>
+                <a href="#" class="link-primary">Lihat Semua →</a>
+            </div>
+
+            <div class="articles-grid">
+                <article class="article-card">
+                    <h3>Renovasi Masjid Rampung 100 Persen</h3>
+                    <p>Proses renovasi masjid yang dimulai awal tahun ini akhirnya selesai dengan hasil yang memuaskan.</p>
+                    <div class="article-footer">
+                        <span class="date">12 Desember 2024</span>
+                        <span class="badge badge-secondary">Berita</span>
+                    </div>
+                </article>
+
+                <article class="article-card">
+                    <h3>Program Pengajian Malam Dilanjutkan</h3>
+                    <p>Pengajian malam setiap hari Selasa dan Kamis akan dilanjutkan dengan topik-topik pilihan.</p>
+                    <div class="article-footer">
+                        <span class="date">10 Desember 2024</span>
+                        <span class="badge badge-secondary">Program</span>
+                    </div>
+                </article>
+
+                <article class="article-card">
+                    <h3>Tamu Istimewa dari Malaysia</h3>
+                    <p>Delegasi ustad dari Malaysia mengunjungi masjid untuk berbagi pengalaman mengelola masjid modern.</p>
+                    <div class="article-footer">
+                        <span class="date">8 Desember 2024</span>
+                        <span class="badge badge-secondary">Kunjungan</span>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <script src="assets/JS/dashboard.js"></script>
+</body>
+</html>

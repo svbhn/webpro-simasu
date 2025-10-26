@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIMASU - Sistem Inventaris</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="assets/JS/inventaris.js"></script>
+    <link rel="stylesheet" href="assets/css/inventaris.css">
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="logo">
+                <div class="logo-icon">S</div>
+                <div>SIMASU</div>
+            </div>
+            <ul class="menu">
+                <li class="menu-item">Dashboard</li>
+                <li class="menu-item active">Inventaris</li>
+                <li class="menu-item">Sewa Ruangan</li>
+                <li class="menu-item">Kalender</li>
+                <li class="menu-item">Profil</li>
+            </ul>
+            <button class="logout">Logout</button>
+        </aside>
+
+        <main class="main-content">
+            <div class="header">
+                <div>
+                    <h1>Inventaris</h1>
+                    <p class="subtitle">Kelola semua aset dan perlengkapan masjid</p>
+                </div>
+                <button class="btn-primary" id="btnTambah">+ Tambah Barang</button>
+            </div>
+
+            <div class="card">
+                <input type="text" class="search-input" id="searchInput" placeholder="Cari barang...">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nama Barang</th>
+                            <th>Kategori</th>
+                            <th>Jumlah</th>
+                            <th>Status</th>
+                            <th>Diperbarui</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody"></tbody>
+                </table>
+                <div class="footer">
+                    Menampilkan <span id="itemCount">0</span> dari <span id="totalCount">0</span> barang
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Tambah Barang</h2>
+                <button class="btn-close" id="btnCloseModal"></button>
+            </div>
+            <form id="formBarang">
+                <div class="form-group">
+                    <label>Nama Barang</label>
+                    <input type="text" class="form-control" id="namaBarang" required>
+                </div>
+                <div class="form-group">
+                    <label>Kategori</label>
+                    <select class="form-control" id="kategori" required>
+                        <option value="">Pilih Kategori</option>
+                        <option value="Pakaian Ibadah">Pakaian Ibadah</option>
+                        <option value="Furniture">Furniture</option>
+                        <option value="Alat Musik">Alat Musik</option>
+                        <option value="Elektronik">Elektronik</option>
+                        <option value="Perlengkapan">Perlengkapan</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Jumlah</label>
+                    <input type="number" class="form-control" id="jumlah" min="0" required>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn-secondary" id="btnBatal">Batal</button>
+                    <button type="submit" class="btn-primary">Simpan</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

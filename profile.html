@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Profil Pengguna - SIMASU</title>
+  <link rel="stylesheet" href="assets/css/profile.css" />
+</head>
+<body>
+  <div class="sidebar">
+    <div class="sidebar-header">
+      <div class="logo"></div>
+      <span class="logo-badge" aria-hidden="true">S</span>
+      <span class="logo-text">SIMASU</span>
+    </div>
+    <ul class="menu">
+      <li><img src="assets/img/icons/home.png" class="img" alt="Dashboard Icon"> Dashboard</li>
+      <li><img src="assets/img/icons/package-check.png" class="img" alt="Inventaris Icon"> Inventaris</li>
+      <li><img src="assets/img/icons/door.png" class="img" alt="Sewa Ruangan Icon"> Sewa Ruangan</li>
+      <li><img src="assets/img/icons/calendar.png" class="img" alt="Kalender Icon"> Kalender</li>
+      <li class="active"><img src="assets/img/icons/user.png" class="img" alt="Profil Icon"> Profil</li>
+    </ul>
+    <button class="logout">
+      <img src="assets/img/icons/logout.png" class="img" alt="Logout Icon">
+      Logout
+    </button>
+  </div>
+
+  <div class="main-content">
+    <h2>Profil Pengguna</h2>
+    <p class="subtitle">Kelola informasi akun dan preferensi keamanan</p>
+
+    <div class="profile-container">
+      <div class="profile-card">
+        <div class="avatar">AB</div>
+        <h3>Ahmad Budiman</h3>
+        <p class="role">Administrator</p>
+        <p class="joined">Terdaftar sejak 15 Januari 2024</p>
+      </div>
+
+      <div class="form-section">
+        <h3>Informasi Pribadi</h3>
+        <form id="infoForm">
+          <div class="form-group">
+            <label>Nama Lengkap</label>
+            <input type="text" placeholder="Masukkan nama lengkap">
+          </div>
+          <div class="form-group">
+            <label>Jabatan</label>
+            <input type="text" placeholder="Masukkan jabatan">
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" placeholder="Masukkan email">
+          </div>
+          <div class="form-group">
+            <label>Nomor Telepon</label>
+            <input type="tel" placeholder="Masukkan nomor telepon">
+          </div>
+          <div class="form-group">
+            <label>Alamat</label>
+            <input type="text" placeholder="Masukkan alamat">
+          </div>
+          <button type="button" class="btn">Simpan Perubahan</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="security-section">
+      <h3>Keamanan Akun</h3>
+      <form id="passwordForm">
+        <div class="form-group">
+          <label>Kata Sandi Saat Ini</label>
+          <input type="password" placeholder="Masukkan kata sandi saat ini">
+        </div>
+        <div class="form-group">
+          <label>Kata Sandi Baru</label>
+          <input type="password" placeholder="Masukkan kata sandi baru">
+        </div>
+        <div class="form-group">
+          <label>Konfirmasi Kata Sandi Baru</label>
+          <input type="password" placeholder="Konfirmasi kata sandi baru">
+        </div>
+        <button type="button" class="btn">Ubah Kata Sandi</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="assets/JS/profile.js"></script>
+</body>
+</html>
