@@ -1,0 +1,52 @@
+{
+  "rooms": [
+    {
+      "id": 1,
+      "name": "Aula Utama",
+      "floor": "Lantai 1",
+      "description": "Ruang utama untuk acara besar dan pengajian",
+      "capacity": 200,
+      "status": "tersedia"
+    },
+    {
+      "id": 2,
+      "name": "Ruang Pertemuan",
+      "floor": "Lantai 2",
+      "description": "Ruang pertemuan dengan AC dan proyektor",
+      "capacity": 50,
+      "status": "disewa"
+    },
+    {
+      "id": 3,
+      "name": "Kamar Tidur Jamaah",
+      "floor": "Lantai 2",
+      "description": "Kamar tidur untuk jamaah yang menginap",
+      "capacity": 20,
+      "status": "tersedia"
+    },
+    {
+      "id": 4,
+      "name": "Dapur Masjid",
+      "floor": "Lantai 1",
+      "description": "Dapur lengkap dengan peralatan memasak",
+      "capacity": 0,
+      "status": "pemeliharaan"
+    },
+    {
+      "id": 5,
+      "name": "Ruang Anak-anak",
+      "floor": "Lantai 1",
+      "description": "Ruang bermain dan belajar untuk anak-anak",
+      "capacity": 30,
+      "status": "tersedia"
+    },
+    {
+      "id": 6,
+      "name": "Perpustakaan",
+      "floor": "Lantai 2",
+      "description": "Perpustakaan dengan koleksi buku islami",
+      "capacity": 25,
+      "status": "tersedia"
+    }
+  ]
+}
