@@ -4,13 +4,13 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>SIMASU – Masuk</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
   </head>
   <body>
     <header class="hero">
       <div class="logo-wrap" aria-hidden="true">
         <div class="logo-wrap">
-          <img src="assets/logo.png" alt="Logo SIMASU" class="logo" />
+          <img src="assets/img/logo.png" alt="Logo SIMASU" class="logo" />
         </div>
       </div>
       <div class="brand">S I M A S U</div>
@@ -70,5 +70,22 @@
     </main>
 
     <footer class="footer">© 2025 Takmir Masjid Al-Barokah.</footer>
+
+    <script>
+      document.querySelector("form").addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        const u = document.getElementById("email").value.trim();
+        const p = document.getElementById("password").value.trim();
+
+        if (u === "admin@gmail.com" && p === "admin123") {
+          window.location.href = "dashboard.html";
+        } else {
+          alert("Username atau kata sandi salah.");
+          document.getElementById("password").value = "";
+          document.getElementById("email").focus();
+        }
+      });
+    </script>
   </body>
 </html>
