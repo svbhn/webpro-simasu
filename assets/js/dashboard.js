@@ -2,22 +2,27 @@
 const navItems = document.querySelectorAll('.nav-item');
 const logoutBtn = document.getElementById('logoutBtn');
 
-// ===== NAVIGATION ACTIVE STATE =====
+//Navigation
 navItems.forEach(item => {
     item.addEventListener('click', (e) => {
         e.preventDefault();
         
-        // ubah status active
         navItems.forEach(nav => nav.classList.remove('active'));
         item.classList.add('active');
         
-        // tampilkan notifikasi halaman
-        const navText = item.querySelector('.nav-text').textContent;
-        showNotification(`Halaman ${navText} akan segera tersedia`);
+        const targetPage = item.getAttribute('href');
+
+        if (targetPage && targetPage !== '#') {
+            window.location.href = targetPage;
+        } else {
+            const navText = item.querySelector('.nav-text').textContent;
+            showNotification(`Halaman ${navText} akan segera tersedia`);
+        }
     });
 });
 
-// ===== LOGOUT HANDLER =====
+
+//Logout handler
 if (logoutBtn) {
     logoutBtn.addEventListener('click', () => {
         // popup konfirmasi custom
