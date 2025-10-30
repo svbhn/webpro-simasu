@@ -11,9 +11,10 @@ body {
     min-height: 100vh;
 }
 
+/* SIDEBAR */
 .sidebar {
-    width: 256px;
-    background-color: #22c55e;
+    width: 260px;
+    background: linear-gradient(180deg, #16a34a 0%, #15803d 100%);
     color: white;
     display: flex;
     flex-direction: column;
@@ -21,12 +22,12 @@ body {
     height: 100vh;
     left: 0;
     top: 0;
+    transition: transform 0.3s ease;
 }
 
 .sidebar-header {
     padding: 20px;
     display: flex;
-    justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
@@ -35,33 +36,18 @@ body {
     display: flex;
     align-items: center;
     gap: 12px;
+    font-size: 20px;
+    font-weight: 600;
 }
 
 .logo-icon {
-    width: 40px;
-    height: 40px;
-    background-color: white;
-    color: #22c55e;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    font-size: 20px;
+    width: 36px;
+    height: 36px;
 }
 
 .logo-text {
     font-size: 20px;
     font-weight: bold;
-}
-
-.close-btn {
-    background: none;
-    border: none;
-    color: white;
-    font-size: 24px;
-    cursor: pointer;
-    padding: 4px;
 }
 
 .sidebar-nav {
@@ -73,42 +59,51 @@ body {
     display: flex;
     align-items: center;
     gap: 12px;
-    padding: 12px 20px;
-    color: white;
+    padding: 14px 20px;
+    color: rgba(255, 255, 255, 0.8);
     text-decoration: none;
-    transition: background-color 0.2s;
+    transition: all 0.2s;
+    border-left: 3px solid transparent;
 }
 
 .nav-item:hover {
     background-color: rgba(255, 255, 255, 0.1);
+    color: white;
 }
 
 .nav-item.active {
-    background-color: rgba(255, 255, 255, 0.2);
-    border-left: 4px solid white;
-    padding-left: 16px;
+    background-color: rgba(255, 255, 255, 0.15);
+    color: white;
+    border-left-color: white;
 }
 
 .nav-icon {
-    font-size: 20px;
-}
-
-.sidebar-footer {
-    padding: 20px;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    width: 20px;
+    height: 20px;
 }
 
 .logout-btn {
     display: flex;
     align-items: center;
     gap: 12px;
+    padding: 14px 20px;
+    margin: 20px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: 8px;
     color: white;
-    text-decoration: none;
-    padding: 12px 0;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.2s;
 }
 
+.logout-btn:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* MAIN CONTENT */
 .main-content {
-    margin-left: 256px;
+    margin-left: 260px;
     flex: 1;
     padding: 32px;
 }
@@ -303,6 +298,7 @@ body {
     }
 }
 
+/* MODAL */
 .modal-overlay {
     position: fixed;
     top: 0;
