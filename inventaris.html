@@ -9,21 +9,42 @@
     <link rel="stylesheet" href="assets/css/inventaris.css">
 </head>
 <body>
-    <div class="container">
-        <aside class="sidebar">
+<aside class="sidebar">
+        <div class="sidebar-header">
             <div class="logo">
-                <div class="logo-icon">S</div>
-                <div>SIMASU</div>
+                <img src="assets/img/logo.png" alt="Logo icon" class="logo-icon">
+                <span class="logo-text">SIMASU</span>
             </div>
-            <ul class="menu">
-                <li class="menu-item">Dashboard</li>
-                <li class="menu-item active">Inventaris</li>
-                <li class="menu-item">Sewa Ruangan</li>
-                <li class="menu-item">Kalender</li>
-                <li class="menu-item">Profil</li>
-            </ul>
-            <button class="logout">Logout</button>
-        </aside>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="dashboard.html" class="nav-item active">
+                <img src="assets/img/icons/home.png" alt="dashboard icon" class="logo-icon">
+                <span class="nav-text">Dashboard</span>
+            </a>
+            <a href="inventaris.html" class="nav-item">
+                <img src="assets/img/icons/cube.png" alt="Inventaris icon" class="logo-icon">
+                <span class="nav-text">Inventaris</span>
+            </a>
+            <a href="sewa.html" class="nav-item">
+                <img src="assets/img/icons/door.png" alt="Ruangan Logo" class="logo-icon">
+                <span class="nav-text">Sewa Ruangan</span>
+            </a>
+            <a href="Calender.html" class="nav-item">
+                <img src="assets/img/icons/calendar.png" alt="Calendar Logo" class="logo-icon">
+                <span class="nav-text">Kalender</span>
+            </a>
+            <a href="profile.html" class="nav-item">
+                <img src="assets/img/icons/user.png" alt="Profil Logo" class="logo-icon">
+                <span class="nav-text">Profil</span>
+            </a>
+        </nav>
+
+        <button class="logout-btn" id="logoutBtn">
+            <img src="assets/img/icons/logout.png" alt="logout Logo" width="20" height="20">
+            <span>Logout</span>
+        </button>
+    </aside>
 
         <main class="main-content">
             <div class="header">
