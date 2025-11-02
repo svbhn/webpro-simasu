@@ -278,26 +278,6 @@ body {
     background-color: #f9fafb;
 }
 
-@media (max-width: 768px) {
-    .sidebar {
-        width: 200px;
-    }
-    
-    .main-content {
-        margin-left: 200px;
-        padding: 20px;
-    }
-    
-    .room-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .content-header {
-        flex-direction: column;
-        gap: 16px;
-    }
-}
-
 /* MODAL */
 .modal-overlay {
     position: fixed;
@@ -350,6 +330,12 @@ body {
     align-items: center;
     padding: 24px;
     border-bottom: 1px solid #e5e7eb;
+}
+
+.modal-title {
+    font-size: 20px;
+    font-weight: 600;
+    color: #1f2937;
 }
 
 .modal-close {
@@ -415,4 +401,310 @@ body {
     gap: 12px;
     padding: 24px;
     border-top: 1px solid #e5e7eb;
+}
+
+/* FORM STYLES */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-label {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    color: #374151;
+    margin-bottom: 8px;
+}
+
+.required {
+    color: #ef4444;
+}
+
+.form-input {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 14px;
+    color: #1f2937;
+    transition: border-color 0.2s;
+    font-family: inherit;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: #22c55e;
+    box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.1);
+}
+
+.form-input::placeholder {
+    color: #9ca3af;
+}
+
+textarea.form-input {
+    resize: vertical;
+    min-height: 80px;
+}
+
+select.form-input {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%236b7280' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    padding-right: 36px;
+}
+
+/* NOTIFICATION */
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #22c55e;
+    color: white;
+    padding: 16px 24px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 2000;
+    animation: slideInRight 0.3s ease-out;
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.notification.fade-out {
+    animation: fadeOut 0.3s ease-out;
+}
+
+@keyframes fadeOut {
+    to {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+}
+
+/* DOWNLOAD NOTIFICATION */
+.download-notification {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 2000;
+    animation: slideInUp 0.3s ease-out;
+}
+
+@keyframes slideInUp {
+    from {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.download-content {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 20px;
+    position: relative;
+}
+
+.download-content span {
+    color: #1f2937;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.btn-download {
+    background-color: #22c55e;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    transition: background-color 0.2s;
+}
+
+.btn-download:hover {
+    background-color: #16a34a;
+}
+
+.btn-close-notif {
+    background: none;
+    border: none;
+    color: #6b7280;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 0;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+.btn-close-notif:hover {
+    background-color: #f3f4f6;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 200px;
+    }
+    
+    .main-content {
+        margin-left: 200px;
+        padding: 20px;
+    }
+    
+    .room-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .content-header {
+        flex-direction: column;
+        gap: 16px;
+    }
+    
+    .notification,
+    .download-notification {
+        left: 20px;
+        right: 20px;
+    }
+    
+    .download-content {
+        flex-wrap: wrap;
+    }
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 200px;
+    }
+    
+    .main-content {
+        margin-left: 200px;
+        padding: 20px;
+    }
+    
+    .room-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .content-header {
+        flex-direction: column;
+        gap: 16px;
+    }
+    
+    .notification,
+    .download-notification {
+        left: 20px;
+        right: 20px;
+    }
+    
+    .download-content {
+        flex-wrap: wrap;
+    }
+}
+
+/* CONFIRM POPUP STYLES */
+.confirm-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.confirm-box {
+    background: white;
+    padding: 24px 32px;
+    border-radius: 12px;
+    text-align: center;
+    width: 300px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    animation: confirmFadeIn 0.3s ease;
+}
+
+.confirm-box.fade-out {
+    animation: confirmFadeOut 0.3s ease;
+}
+
+.confirm-message {
+    font-size: 16px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.confirm-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.confirm-btn {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: opacity 0.2s;
+}
+
+.confirm-btn:hover {
+    opacity: 0.9;
+}
+
+.confirm-btn-yes {
+    background: #16a34a;
+    color: white;
+}
+
+.confirm-btn-no {
+    background: #e5e7eb;
+    color: #111;
+}
+
+@keyframes confirmFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes confirmFadeOut {
+    from {
+        opacity: 1;
+        transform: scale(1);
+    }
+    to {
+        opacity: 0;
+        transform: scale(0.9);
+    }
 }
