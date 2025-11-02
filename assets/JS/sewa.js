@@ -172,6 +172,151 @@ function showDetailModal(room) {
     document.body.style.overflow = 'hidden';
 }
 
+function showAddRoomModal() {
+    const modalHTML = `
+        <div class="modal-overlay" id="addRoomModal" onclick="closeAddModal(event)">
+            <div class="modal-content" onclick="event.stopPropagation()">
+                <div class="modal-header">
+                    <h2 class="modal-title">Tambah Ruangan Baru</h2>
+                    <button class="modal-close" onclick="closeAddModal()">&times;</button>
+                </div>
+                <form id="addRoomForm" onsubmit="handleAddRoom(event)">
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label class="form-label">Nama Ruangan <span class="required">*</span></label>
+                            <input type="text" id="roomName" class="form-input" placeholder="Contoh: Aula Serbaguna" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Lantai <span class="required">*</span></label>
+                            <select id="roomFloor" class="form-input" required>
+                                <option value="">Pilih Lantai</option>
+                                <option value="Lantai 1">Lantai 1</option>
+                                <option value="Lantai 2">Lantai 2</option>
+                                <option value="Lantai 3">Lantai 3</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Deskripsi <span class="required">*</span></label>
+                            <textarea id="roomDescription" class="form-input" rows="3" placeholder="Deskripsi ruangan..." required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Kapasitas (orang) <span class="required">*</span></label>
+                            <input type="number" id="roomCapacity" class="form-input" min="0" placeholder="0" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Status <span class="required">*</span></label>
+                            <select id="roomStatus" class="form-input" required>
+                                <option value="">Pilih Status</option>
+                                <option value="tersedia">Tersedia</option>
+                                <option value="disewa">Disewa</option>
+                                <option value="pemeliharaan">Pemeliharaan</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" onclick="closeAddModal()">Batal</button>
+                        <button type="submit" class="btn btn-primary">Simpan Ruangan</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    `;
+    document.body.insertAdjacentHTML('beforeend', modalHTML);
+    document.body.style.overflow = 'hidden';
+}
+
+function handleAddRoom(event) {
+    event.preventDefault();
+    
+    const newRoom = {
+        id: roomsData.length > 0 ? Math.max(...roomsData.map(r => r.id)) + 1 : 1,
+        name: document.getElementById('roomName').value,
+        floor: document.getElementById('roomFloor').value,
+        description: document.getElementById('roomDescription').value,
+        capacity: parseInt(document.getElementById('roomCapacity').value),
+        status: document.getElementById('roomStatus').value
+    };
+    
+    roomsData.push(newRoom);
+    displayRooms(roomsData);
+    saveRoomsToJSON();
+    closeAddModal();
+    
+    // Tampilin notifikasi sukses
+    showNotification('Ruangan berhasil ditambahkan!');
+}
+
+async function saveRoomsToJSON() {
+    const dataToSave = {
+        rooms: roomsData
+    };
+    
+    // Untuk simulasi penyimpanan (karena browser tidak bisa menulis file langsung)
+    // Data bkal disimpan di localStorage trus bisa didownload
+    localStorage.setItem('roomsData', JSON.stringify(dataToSave));
+    
+    // ngebuat file JSON untuk didownload
+    const jsonString = JSON.stringify(dataToSave, null, 2);
+    const blob = new Blob([jsonString], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    
+    // Auto download (opsional)
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'list_rooms.json';
+    
+    console.log('Data ruangan telah diperbarui. Download file JSON untuk menyimpan perubahan.');
+    console.log('Data tersimpan di localStorage dengan key: roomsData');
+    
+    // Tampilin opsi download
+    showDownloadOption(url);
+}
+
+function showDownloadOption(url) {
+    const existingDownload = document.getElementById('downloadNotification');
+    if (existingDownload) {
+        existingDownload.remove();
+    }
+    
+    const downloadHTML = `
+        <div class="download-notification" id="downloadNotification">
+            <div class="download-content">
+                <span>💾 Data berhasil disimpan!</span>
+                <a href="${url}" download="list_rooms.json" class="btn-download">Download JSON</a>
+                <button onclick="closeDownloadNotification()" class="btn-close-notif">×</button>
+            </div>
+        </div>
+    `;
+    document.body.insertAdjacentHTML('beforeend', downloadHTML);
+    
+    setTimeout(() => {
+        const notif = document.getElementById('downloadNotification');
+        if (notif) notif.remove();
+    }, 10000);
+}
+
+function closeDownloadNotification() {
+    const notif = document.getElementById('downloadNotification');
+    if (notif) notif.remove();
+}
+
+function showNotification(message) {
+    const notificationHTML = `
+        <div class="notification" id="notification">
+            <span>✓ ${message}</span>
+        </div>
+    `;
+    document.body.insertAdjacentHTML('beforeend', notificationHTML);
+    
+    setTimeout(() => {
+        const notif = document.getElementById('notification');
+        if (notif) {
+            notif.classList.add('fade-out');
+            setTimeout(() => notif.remove(), 300);
+        }
+    }, 3000);
+}
+
 function closeModal(event) {
     if (event && event.target.className !== 'modal-overlay') return;
     const modal = document.getElementById('detailModal');
@@ -181,10 +326,87 @@ function closeModal(event) {
     }
 }
 
+function closeAddModal(event) {
+    if (event && event.target.className !== 'modal-overlay') return;
+    const modal = document.getElementById('addRoomModal');
+    if (modal) {
+        modal.remove();
+        document.body.style.overflow = 'auto';
+    }
+}
+
+// Event listener buat tombol tambah ruangan
 document.getElementById('btnTambahRuangan').addEventListener('click', () => {
-    alert('Fitur tambah ruangan akan segera hadir!');
+    showAddRoomModal();
 });
 
+// Load data pas halaman dimuat
 document.addEventListener('DOMContentLoaded', () => {
-    loadRooms();
+    // Cek apa ada data di localStorage
+    const savedData = localStorage.getItem('roomsData');
+    if (savedData) {
+        const parsed = JSON.parse(savedData);
+        roomsData = parsed.rooms;
+        displayRooms(roomsData);
+        console.log('Data dimuat dari localStorage');
+    } else {
+        loadRooms();
+    }
+});
+
+// Logout handler
+const logoutBtn = document.getElementById('logoutBtn');
+if (logoutBtn) {
+    logoutBtn.addEventListener('click', () => {
+        showConfirmPopup('Apakah Anda yakin ingin keluar?', () => {
+            showNotification('Logout berhasil!');
+            setTimeout(() => {
+                window.location.href = 'index.html';
+            }, 1000);
+        });
+    });
+}
+
+// Popup konfirmasi logout
+function showConfirmPopup(message, onConfirm) {
+    const overlay = document.createElement('div');
+    overlay.className = 'confirm-overlay';
+
+    const box = document.createElement('div');
+    box.className = 'confirm-box';
+    box.innerHTML = `
+        <p class="confirm-message">${message}</p>
+        <div class="confirm-buttons">
+            <button id="yesBtn" class="confirm-btn confirm-btn-yes">Ya</button>
+            <button id="noBtn" class="confirm-btn confirm-btn-no">Batal</button>
+        </div>
+    `;
+
+    overlay.appendChild(box);
+    document.body.appendChild(overlay);
+
+    const fadeOut = () => {
+        box.classList.add('fade-out');
+        setTimeout(() => overlay.remove(), 300);
+    };
+
+    box.querySelector('#yesBtn').addEventListener('click', () => {
+        fadeOut();
+        onConfirm();
+    });
+    box.querySelector('#noBtn').addEventListener('click', fadeOut);
+}
+
+// Load data pas halaman dimuat
+document.addEventListener('DOMContentLoaded', () => {
+    // Cek apa ada data di localStorage
+    const savedData = localStorage.getItem('roomsData');
+    if (savedData) {
+        const parsed = JSON.parse(savedData);
+        roomsData = parsed.rooms;
+        displayRooms(roomsData);
+        console.log('Data dimuat dari localStorage');
+    } else {
+        loadRooms();
+    }
 });
