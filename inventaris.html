@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SIMASU - Sistem Inventaris</title>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="assets/JS/inventaris.js"></script>
     <link rel="stylesheet" href="assets/css/inventaris.css">
 </head>
+
 <body>
-<aside class="sidebar">
+    <aside class="sidebar">
         <div class="sidebar-header">
             <div class="logo">
                 <img src="assets/img/logo.png" alt="Logo icon" class="logo-icon">
@@ -18,11 +18,11 @@
         </div>
 
         <nav class="sidebar-nav">
-            <a href="dashboard.html" class="nav-item active">
+            <a href="dashboard.html" class="nav-item">
                 <img src="assets/img/icons/home.png" alt="dashboard icon" class="logo-icon">
                 <span class="nav-text">Dashboard</span>
             </a>
-            <a href="inventaris.html" class="nav-item">
+            <a href="inventaris.html" class="nav-item active">
                 <img src="assets/img/icons/cube.png" alt="Inventaris icon" class="logo-icon">
                 <span class="nav-text">Inventaris</span>
             </a>
@@ -44,37 +44,37 @@
             <img src="assets/img/icons/logout.png" alt="logout Logo" width="20" height="20">
             <span>Logout</span>
         </button>
-    </aside>
+    </aside>
 
-        <main class="main-content">
-            <div class="header">
-                <div>
-                    <h1>Inventaris</h1>
-                    <p class="subtitle">Kelola semua aset dan perlengkapan masjid</p>
-                </div>
-                <button class="btn-primary" id="btnTambah">+ Tambah Barang</button>
+    <main class="main-content">
+        <div class="header">
+            <div>
+                <h1>Inventaris</h1>
+                <p class="subtitle">Kelola semua aset dan perlengkapan masjid</p>
             </div>
+            <button class="btn-primary" id="btnTambah">+ Tambah Barang</button>
+        </div>
 
-            <div class="card">
-                <input type="text" class="search-input" id="searchInput" placeholder="Cari barang...">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Nama Barang</th>
-                            <th>Kategori</th>
-                            <th>Jumlah</th>
-                            <th>Status</th>
-                            <th>Diperbarui</th>
-                            <th>Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody id="tableBody"></tbody>
-                </table>
-                <div class="footer">
-                    Menampilkan <span id="itemCount">0</span> dari <span id="totalCount">0</span> barang
-                </div>
+        <div class="card">
+            <input type="text" class="search-input" id="searchInput" placeholder="Cari barang...">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nama Barang</th>
+                        <th>Kategori</th>
+                        <th>Jumlah</th>
+                        <th>Status</th>
+                        <th>Diperbarui</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody"></tbody>
+            </table>
+            <div class="footer">
+                Menampilkan <span id="itemCount">0</span> dari <span id="totalCount">0</span> barang
             </div>
-        </main>
+        </div>
+    </main>
     </div>
 
     <div class="modal" id="modal">
@@ -110,5 +110,7 @@
             </form>
         </div>
     </div>
+    <script src="assets/JS/inventaris.js"></script>
 </body>
+
 </html>
