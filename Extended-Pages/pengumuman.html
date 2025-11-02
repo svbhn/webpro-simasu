@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SIMASU - Semua Pengumuman</title>
+    <link rel="stylesheet" href="../assets/css/dashboard.css" />
+</head>
+
+<body>
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <img src="../assets/img/logo.png" alt="Logo icon" class="logo-icon" />
+                <span class="logo-text">SIMASU</span>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="../dashboard.html" class="nav-item">
+                <img src="../assets/img/icons/home.png" alt="dashboard icon" class="logo-icon" />
+                <span class="nav-text">Dashboard</span>
+            </a>
+            <a href="../inventaris.html" class="nav-item">
+                <img src="../assets/img/icons/cube.png" alt="Inventaris icon" class="logo-icon" />
+                <span class="nav-text">Inventaris</span>
+            </a>
+            <a href="../sewa.html" class="nav-item">
+                <img src="../assets/img/icons/door.png" alt="Ruangan Logo" class="logo-icon" />
+                <span class="nav-text">Sewa Ruangan</span>
+            </a>
+            <a href="../Calender.html" class="nav-item">
+                <img src="../assets/img/icons/calendar.png" alt="Calendar Logo" class="logo-icon" />
+                <span class="nav-text">Kalender</span>
+            </a>
+            <a href="../profile.html" class="nav-item">
+                <img src="../assets/img/icons/user.png" alt="Profil Logo" class="logo-icon" />
+                <span class="nav-text">Profil</span>
+            </a>
+        </nav>
+
+        <button class="logout-btn" id="logoutBtn">
+            <img src="../assets/img/icons/logout.png" alt="logout Logo" width="20" height="20" />
+            <span>Logout</span>
+        </button>
+    </aside>
+
+    <main class="main-content">
+        <header class="header">
+            <h1>Semua Pengumuman</h1>
+            <p class="subtitle">
+                Daftar lengkap pengumuman kegiatan dan informasi terbaru masjid
+            </p>
+        </header>
+
+        <section class="card">
+            <div class="announcement-list">
+                <div class="announcement-item">
+                    <div class="announcement-content">
+                        <h3>Pemeliharaan Fasilitas</h3>
+                        <p>
+                            Pemeliharaan rutin akan dilakukan pada hari Sabtu, 15 Desember
+                            2024
+                        </p>
+                        <div class="announcement-footer">
+                            <span class="date">10 Desember 2024</span>
+                            <span class="badge badge-danger">Penting</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="announcement-item">
+                    <div class="announcement-content">
+                        <h3>Penambahan Perlengkapan Ibadah</h3>
+                        <p>
+                            Telah ditambahkan 20 unit telekung baru di gudang inventaris
+                        </p>
+                        <div class="announcement-footer">
+                            <span class="date">8 Desember 2024</span>
+                            <span class="badge badge-success">Normal</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="announcement-item">
+                    <div class="announcement-content">
+                        <h3>Jadwal Kurban</h3>
+                        <p>Pendaftaran kurban dibuka mulai tanggal 1 Januari 2025</p>
+                        <div class="announcement-footer">
+                            <span class="date">5 Desember 2024</span>
+                            <span class="badge badge-success">Normal</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="announcement-item">
+                    <div class="announcement-content">
+                        <h3>Jadwal Rapat Pengurus</h3>
+                        <p>Rapat tahunan pengurus akan dilaksanakan di aula utama</p>
+                        <div class="announcement-footer">
+                            <span class="date">1 Desember 2024</span>
+                            <span class="badge badge-success">Normal</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="announcement-item">
+                    <div class="announcement-content">
+                        <h3>Pembersihan Area Parkir</h3>
+                        <p>
+                            Area parkir akan dibersihkan pada 20 Desember 2024. Mohon
+                            kendaraan tidak diparkir di area tersebut.
+                        </p>
+                        <div class="announcement-footer">
+                            <span class="date">28 November 2024</span>
+                            <span class="badge badge-danger">Penting</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="back-btn-container">
+            <a href="../dashboard.html" class="link-primary">← Kembali ke Dashboard</a>
+        </div>
+    </main>
+
+    <script src="../assets/JS/dashboard.js"></script>
+</body>
+
+</html>
