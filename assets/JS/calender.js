@@ -1,4 +1,3 @@
-// Data peminjaman dan sewa
 let bookings = [
     {
         id: 1,
@@ -19,110 +18,83 @@ const monthNames = [
 ];
 
 function renderCalendar() {
-    const firstDay = new Date(currentYear, currentMonth, 1).getDay();
-    const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
+    const hariPertama = new Date(currentYear, currentMonth, 1).getDay();
+    const hariTerakhir = new Date(currentYear, currentMonth + 1, 0).getDate();
     
     document.getElementById('currentMonth').textContent = `${monthNames[currentMonth]} ${currentYear}`;
     
-    const tbody = document.getElementById('calendarDays');
-    tbody.innerHTML = '';
-
-    let day = 1;
-    let rows = Math.ceil((firstDay + daysInMonth) / 7);
-
-    for (let i = 0; i < rows; i++) {
-        const row = document.createElement('tr');
+    let htmlKalender = '<tr>';
+    
+    for (let i = 0; i < hariPertama; i++) {
+        htmlKalender += '<td><div class="day-cell empty"></div></td>';
+    }
+    
+    for (let hari = 1; hari <= hariTerakhir; hari++) {
+        const dateStr = `${currentYear}-${String(currentMonth + 1).padStart(2, '0')}-${String(hari).padStart(2, '0')}`;
         
-        for (let j = 0; j < 7; j++) {
-            const cell = document.createElement('td');
-            const cellIndex = i * 7 + j;
-            
-            if (cellIndex < firstDay || day > daysInMonth) {
-                const emptyDiv = document.createElement('div');
-                emptyDiv.className = 'day-cell empty';
-                cell.appendChild(emptyDiv);
-            } else {
-                const dateStr = `${currentYear}-${String(currentMonth + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
-                
-                const dayDiv = document.createElement('div');
-                dayDiv.className = 'day-cell';
-                
-                const dayNum = document.createElement('div');
-                dayNum.className = 'day-number';
-                dayNum.textContent = day;
-                dayDiv.appendChild(dayNum);
-
-                const hasPeminjaman = bookings.some(b => 
-                    b.type === 'peminjaman' && dateStr >= b.startDate && dateStr <= b.endDate
-                );
-                
-                const hasSewa = bookings.some(b => 
-                    b.type === 'sewa' && dateStr >= b.startDate && dateStr <= b.endDate
-                );
-
-                if (hasPeminjaman || hasSewa) {
-                    const indicators = document.createElement('div');
-                    indicators.className = 'indicators';
-                    
-                    if (hasPeminjaman) {
-                        const dot = document.createElement('div');
-                        dot.className = 'indicator peminjaman';
-                        indicators.appendChild(dot);
-                    }
-                    
-                    if (hasSewa) {
-                        const dot = document.createElement('div');
-                        dot.className = 'indicator sewa';
-                        indicators.appendChild(dot);
-                    }
-                    
-                    dayDiv.appendChild(indicators);
-                }
-
-                dayDiv.onclick = () => openModal(dateStr);
-                cell.appendChild(dayDiv);
-                day++;
-            }
-            
-            row.appendChild(cell);
+        const hasPeminjaman = bookings.some(b => 
+            b.type === 'peminjaman' && dateStr >= b.startDate && dateStr <= b.endDate
+        );
+        
+        const hasSewa = bookings.some(b => 
+            b.type === 'sewa' && dateStr >= b.startDate && dateStr <= b.endDate
+        );
+        
+        let indicators = '';
+        if (hasPeminjaman) {
+            indicators += '<div class="indicator peminjaman"></div>';
+        }
+        if (hasSewa) {
+            indicators += '<div class="indicator sewa"></div>';
         }
         
-        tbody.appendChild(row);
+        htmlKalender += `
+            <td>
+                <div class="day-cell" onclick="openModal('${dateStr}')">
+                    <div class="day-number">${hari}</div>
+                    ${indicators ? '<div class="indicators">' + indicators + '</div>' : ''}
+                </div>
+            </td>
+        `;
+        
+        if ((hari + hariPertama) % 7 === 0) {
+            htmlKalender += '</tr><tr>';
+        }
     }
-
+    
+    htmlKalender += '</tr>';
+    
+    document.getElementById('calendarDays').innerHTML = htmlKalender;
     renderList();
 }
 
 function renderList() {
-    const list = document.getElementById('itemsList');
-    list.innerHTML = '';
-
     const monthBookings = bookings.filter(b => {
         const month = parseInt(b.startDate.split('-')[1]) - 1;
         const year = parseInt(b.startDate.split('-')[0]);
         return month === currentMonth && year === currentYear;
     });
 
+    let htmlList = '';
+    
     if (monthBookings.length === 0) {
-        list.innerHTML = '<p style="color: #999; text-align: center; padding: 20px; font-size: 13px;">Tidak ada peminjaman bulan ini</p>';
-        return;
+        htmlList = '<p style="color: #999; text-align: center; padding: 20px; font-size: 13px;">Tidak ada peminjaman bulan ini</p>';
+    } else {
+        monthBookings.forEach(b => {
+            htmlList += `
+                <div class="item-card ${b.type}">
+                    <div class="item-title">${b.title}</div>
+                    <div class="item-subtitle">${b.subtitle}</div>
+                    <div class="item-dates">
+                        Mulai: ${formatDate(b.startDate)}<br>
+                        Selesai: ${formatDate(b.endDate)}
+                    </div>
+                </div>
+            `;
+        });
     }
-
-    monthBookings.forEach(b => {
-        const card = document.createElement('div');
-        card.className = `item-card ${b.type}`;
-        
-        card.innerHTML = `
-            <div class="item-title">${b.title}</div>
-            <div class="item-subtitle">${b.subtitle}</div>
-            <div class="item-dates">
-                Mulai: ${formatDate(b.startDate)}<br>
-                Selesai: ${formatDate(b.endDate)}
-            </div>
-        `;
-        
-        list.appendChild(card);
-    });
+    
+    document.getElementById('itemsList').innerHTML = htmlList;
 }
 
 function formatDate(dateStr) {
