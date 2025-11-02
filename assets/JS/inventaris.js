@@ -1,6 +1,6 @@
 let inventoryData = [
-    { id: 1, nama: 'Telekung Wanita', kategori: 'Pakaian Ibadah', jumlah: 45, tanggal: '2024-12-10' },
-    { id: 2, nama: 'Telekung Pria', kategori: 'Pakaian Ibadah', jumlah: 12, tanggal: '2024-12-10' },
+    { id: 1, nama: 'Mukena', kategori: 'Pakaian Ibadah', jumlah: 45, tanggal: '2024-12-10' },
+    { id: 2, nama: 'Sarung', kategori: 'Pakaian Ibadah', jumlah: 12, tanggal: '2024-12-10' },
     { id: 3, nama: 'Kursi Plastik Putih', kategori: 'Furniture', jumlah: 0, tanggal: '2024-12-09' },
     { id: 4, nama: 'Mukena Anak-anak', kategori: 'Pakaian Ibadah', jumlah: 28, tanggal: '2024-12-08' },
     { id: 5, nama: 'Alat Pukul Bedug', kategori: 'Alat Musik', jumlah: 2, tanggal: '2024-12-07' },
@@ -15,32 +15,34 @@ function getStatus(jumlah) {
 }
 
 function renderTable(data = inventoryData) {
-    const tbody = $('#tableBody');
-    tbody.empty();
+    const tbody = document.getElementById('tableBody');
+    tbody.innerHTML = '';
+
     data.forEach(item => {
         const status = getStatus(item.jumlah);
-        tbody.append(`
-                    <tr>
-                        <td>${item.nama}</td>
-                        <td>${item.kategori}</td>
-                        <td>${item.jumlah}</td>
-                        <td><span class="status-badge ${status.class}">${status.text}</span></td>
-                        <td>${item.tanggal}</td>
-                        <td>
-                            <div class="action-btns">
-                                <button class="btn-icon btn-edit" onclick="editItem(${item.id})">Edit</button>
-                                <button class="btn-icon btn-delete" onclick="deleteItem(${item.id})">Delete</button>
-                            </div>
-                        </td>
-                    </tr>
-                `);
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td>${item.nama}</td>
+            <td>${item.kategori}</td>
+            <td>${item.jumlah}</td>
+            <td><span class="status-badge ${status.class}">${status.text}</span></td>
+            <td>${item.tanggal}</td>
+            <td>
+                <div class="action-btns">
+                    <button class="btn-icon btn-edit" onclick="editItem(${item.id})">Edit</button>
+                    <button class="btn-icon btn-delete" onclick="deleteItem(${item.id})">Delete</button>
+                </div>
+            </td>
+        `;
+        tbody.appendChild(row);
     });
-    $('#itemCount').text(data.length);
-    $('#totalCount').text(inventoryData.length);
+
+    document.getElementById('itemCount').textContent = data.length;
+    document.getElementById('totalCount').textContent = inventoryData.length;
 }
 
-$('#searchInput').on('input', function () {
-    const searchTerm = $(this).val().toLowerCase();
+document.getElementById('searchInput').addEventListener('input', function () {
+    const searchTerm = this.value.toLowerCase();
     const filtered = inventoryData.filter(item =>
         item.nama.toLowerCase().includes(searchTerm) ||
         item.kategori.toLowerCase().includes(searchTerm)
@@ -48,28 +50,33 @@ $('#searchInput').on('input', function () {
     renderTable(filtered);
 });
 
-$('#btnTambah').click(function () {
+document.getElementById('btnTambah').addEventListener('click', function () {
     editingId = null;
-    $('#modalTitle').text('Tambah Barang');
-    $('#formBarang')[0].reset();
-    $('#modal').addClass('active');
+    document.getElementById('modalTitle').textContent = 'Tambah Barang';
+    document.getElementById('formBarang').reset();
+    document.getElementById('modal').classList.add('active');
 });
 
 function closeModal() {
-    $('#modal').removeClass('active');
+    document.getElementById('modal').classList.remove('active');
 }
 
-$('#btnCloseModal, #btnBatal').click(closeModal);
-$('#modal').click(function (e) {
-    if (e.target.id === 'modal') closeModal();
+document.getElementById('btnCloseModal').addEventListener('click', closeModal);
+document.getElementById('btnBatal').addEventListener('click', closeModal);
+
+document.getElementById('modal').addEventListener('click', function (e) {
+    if (e.target.id === 'modal') {
+        closeModal();
+    }
 });
 
-$('#formBarang').submit(function (e) {
+document.getElementById('formBarang').addEventListener('submit', function (e) {
     e.preventDefault();
+
     const item = {
-        nama: $('#namaBarang').val(),
-        kategori: $('#kategori').val(),
-        jumlah: parseInt($('#jumlah').val()),
+        nama: document.getElementById('namaBarang').value,
+        kategori: document.getElementById('kategori').value,
+        jumlah: parseInt(document.getElementById('jumlah').value),
         tanggal: new Date().toISOString().split('T')[0]
     };
 
@@ -88,11 +95,11 @@ $('#formBarang').submit(function (e) {
 window.editItem = function (id) {
     editingId = id;
     const item = inventoryData.find(i => i.id === id);
-    $('#modalTitle').text('Edit Barang');
-    $('#namaBarang').val(item.nama);
-    $('#kategori').val(item.kategori);
-    $('#jumlah').val(item.jumlah);
-    $('#modal').addClass('active');
+    document.getElementById('modalTitle').textContent = 'Edit Barang';
+    document.getElementById('namaBarang').value = item.nama;
+    document.getElementById('kategori').value = item.kategori;
+    document.getElementById('jumlah').value = item.jumlah;
+    document.getElementById('modal').classList.add('active');
 };
 
 window.deleteItem = function (id) {
@@ -102,6 +109,6 @@ window.deleteItem = function (id) {
     }
 };
 
-$(document).ready(function () {
+document.addEventListener('DOMContentLoaded', function () {
     renderTable();
 });
