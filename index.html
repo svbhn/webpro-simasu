@@ -71,20 +71,25 @@
 
     <footer class="footer">© 2025 Takmir Masjid Al-Barokah.</footer>
 
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
     <script>
-      document.querySelector("form").addEventListener("submit", function (e) {
-        e.preventDefault();
+      $(function () {
+        $("form").on("submit", function (e) {
+          e.preventDefault();
 
-        const u = document.getElementById("email").value.trim();
-        const p = document.getElementById("password").value.trim();
+          const u = $.trim($("#email").val());
+          const p = $.trim($("#password").val());
 
-        if (u === "admin@gmail.com" && p === "admin123") {
-          window.location.href = "dashboard.html";
-        } else {
-          alert("Username atau kata sandi salah.");
-          document.getElementById("password").value = "";
-          document.getElementById("email").focus();
-        }
+          if (u === "admin@gmail.com" && p === "admin123") {
+            window.location.href = "dashboard.html";
+          } else {
+            alert("Username atau kata sandi salah.");
+            $("#password").val("");
+            $("#email").trigger("focus");
+          }
+        });
       });
     </script>
   </body>

@@ -87,35 +87,39 @@
 
     <footer class="footer">© 2025 Takmir Masjid Al-Barokah.</footer>
 
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
     <script>
-      document.querySelector("form").addEventListener("submit", function (e) {
-        e.preventDefault();
+      $(function () {
+        $("form").on("submit", function (e) {
+          e.preventDefault();
 
-        const email = document.getElementById("email").value.trim();
-        const pass = document.getElementById("password").value;
-        const confirm = document.getElementById("confirm").value;
+          const email = $.trim($("#email").val());
+          const pass = $("#password").val();
+          const confirm = $("#confirm").val();
 
-        const emailOK = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-        if (!emailOK) {
-          alert("Email tidak valid.");
-          document.getElementById("email").focus();
-          return;
-        }
+          const emailOK = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+          if (!emailOK) {
+            alert("Email tidak valid.");
+            $("#email").trigger("focus");
+            return;
+          }
 
-        if (pass.length < 6) {
-          alert("Kata sandi minimal 6 karakter.");
-          document.getElementById("password").focus();
-          return;
-        }
+          if (pass.length < 6) {
+            alert("Kata sandi minimal 6 karakter.");
+            $("#password").trigger("focus");
+            return;
+          }
 
-        if (pass !== confirm) {
-          alert("Konfirmasi kata sandi tidak sama.");
-          document.getElementById("confirm").focus();
-          return;
-        }
+          if (pass !== confirm) {
+            alert("Konfirmasi kata sandi tidak sama.");
+            $("#confirm").trigger("focus");
+            return;
+          }
 
-        alert("Pendaftaran berhasil! Silakan masuk dengan akun Anda.");
-        window.location.href = "index.html";
+          alert("Pendaftaran berhasil! Silakan masuk dengan akun Anda.");
+          window.location.href = "index.html";
+        });
       });
     </script>
   </body>
