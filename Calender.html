@@ -8,19 +8,42 @@
 </head>
 <body>
     <div class="container">
-        <div class="sidebar">
-            <div class="logo">
-                <h2>SIMASU</h2>
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <img src="assets/img/logo.png" alt="Logo icon" class="logo-icon" />
+                    <span class="logo-text">SIMASU</span>
+                </div>
             </div>
-            
-            <div class="menu">
-                <div class="menu-item">Dashboard</div>
-                <div class="menu-item">Inventaris</div>
-                <div class="menu-item">Sewa Ruangan</div>
-                <div class="menu-item active">Kalender</div>
-                <div class="menu-item">Profil</div>
-            </div>
-        </div>
+
+            <nav class="sidebar-nav">
+                <a href="dashboard.html" class="nav-item">
+                    <img src="assets/img/icons/home.png" alt="dashboard icon" class="logo-icon" />
+                    <span class="nav-text">Dashboard</span>
+                </a>
+                <a href="inventaris.html" class="nav-item">
+                    <img src="assets/img/icons/cube.png" alt="Inventaris icon" class="logo-icon" />
+                    <span class="nav-text">Inventaris</span>
+                </a>
+                <a href="sewa.html" class="nav-item">
+                    <img src="assets/img/icons/door.png" alt="Ruangan Logo" class="logo-icon" />
+                    <span class="nav-text">Sewa Ruangan</span>
+                </a>
+                <a href="Calender.html" class="nav-item active">
+                    <img src="assets/img/icons/calendar.png" alt="Calendar Logo" class="logo-icon" />
+                    <span class="nav-text">Kalender</span>
+                </a>
+                <a href="profile.html" class="nav-item">
+                    <img src="assets/img/icons/user.png" alt="Profil Logo" class="logo-icon" />
+                    <span class="nav-text">Profil</span>
+                </a>
+            </nav>
+
+            <button class="logout-btn" id="logoutBtn">
+                <img src="assets/img/icons/logout.png" alt="logout Logo" width="20" height="20" />
+                <span>Logout</span>
+            </button>
+        </aside>
 
         <div class="main-content">
             <div class="header">

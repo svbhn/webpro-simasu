@@ -14,38 +14,83 @@ body {
     height: 100vh;
 }
 
-/*Buat Sidebar */
 .sidebar {
-    width: 200px;
-    background: #16a34a;
+    width: 260px;
+    background: linear-gradient(180deg, #16a34a 0%, #15803d 100%);
     color: white;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    height: 100vh;
+    left: 0;
+    top: 0;
+    transition: transform 0.3s ease;
+}
+
+.sidebar-header {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .logo {
-    padding: 20px;
-    background: #15803d;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 20px;
+    font-weight: 600;
 }
 
-.logo h2 {
-    font-size: 16px;
+.logo-icon {
+    width: 36px;
+    height: 36px;
 }
 
-.menu {
-    padding: 10px 0;
+.sidebar-nav {
+    flex: 1;
+    padding: 20px 0;
 }
 
-.menu-item {
-    padding: 12px 20px;
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 20px;
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    transition: all 0.2s;
+    border-left: 3px solid transparent;
+}
+
+.nav-item:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+.nav-item.active {
+    background-color: rgba(255, 255, 255, 0.15);
+    color: white;
+    border-left-color: white;
+}
+
+.logout-btn {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 20px;
+    margin: 20px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: 8px;
+    color: white;
     cursor: pointer;
-    font-size: 14px;
+    font-size: 16px;
+    transition: background-color 0.2s;
 }
 
-.menu-item:hover {
-    background: rgba(255, 255, 255, 0.1);
-}
-
-.menu-item.active {
-    background: rgba(255, 255, 255, 0.2);
+.logout-btn:hover {
+    background-color: rgba(255, 255, 255, 0.2);
 }
 
 .main-content {
@@ -53,6 +98,7 @@ body {
     background: white;
     padding: 30px;
     overflow-y: auto;
+    margin-left: 260px;
 }
 
 .header {
